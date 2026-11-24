@@ -20,10 +20,9 @@ const MUTED = '#4b5563';       // Gray
 const LIGHT_BG = '#f8fafc';    // Card background
 const BORDER = '#e2e8f0';      // Light border
 
-function drawDivider() {
+function drawDivider(yPos) {
   doc.strokeColor(BORDER).lineWidth(1)
-    .moveTo(45, doc.y).lineTo(550, doc.y).stroke();
-  doc.moveDown(0.5);
+    .moveTo(45, yPos).lineTo(550, yPos).stroke();
 }
 
 // ==========================================
@@ -37,20 +36,18 @@ doc.fillColor('#ffffff').fontSize(18).font('Helvetica-Bold')
 doc.fontSize(10).font('Helvetica')
   .text('Remote 1-Month Full Stack Development Internship — Task Submission', 60, 75);
 
-doc.y = 115;
-
 // ==========================================
 // 2. STUDENT DETAILS SECTION
 // ==========================================
 doc.fillColor(PRIMARY).fontSize(12).font('Helvetica-Bold')
-  .text('INTERN INFORMATION');
-doc.moveDown(0.2);
-drawDivider();
+  .text('INTERN INFORMATION', 45, 118);
 
-const infoBoxY = doc.y;
+drawDivider(135);
+
+const infoBoxY = 142;
 doc.rect(45, infoBoxY, 505, 80).fill(LIGHT_BG).stroke(BORDER);
 
-// Two column grid for intern info
+// Left Column Info
 doc.fillColor(DARK).fontSize(9.5).font('Helvetica-Bold');
 doc.text('Full Name:', 60, infoBoxY + 12);
 doc.text('Student ID:', 60, infoBoxY + 32);
@@ -61,6 +58,7 @@ doc.text('Ehtesham Rashid', 145, infoBoxY + 12);
 doc.text('B10/1713', 145, infoBoxY + 32);
 doc.text('Full Stack Development', 145, infoBoxY + 52);
 
+// Right Column Info
 doc.fillColor(DARK).font('Helvetica-Bold');
 doc.text('University:', 305, infoBoxY + 12);
 doc.text('Email:', 305, infoBoxY + 32);
@@ -71,17 +69,15 @@ doc.text('Islamia University of Bahawalpur (IUB)', 375, infoBoxY + 12);
 doc.text('ehteshamrashid78@gmail.com', 375, infoBoxY + 32);
 doc.text('0328-9529502', 375, infoBoxY + 52);
 
-doc.y = infoBoxY + 95;
-
 // ==========================================
 // 3. TASK 1: LINKEDIN ANNOUNCEMENT
 // ==========================================
 doc.fillColor(PRIMARY).fontSize(12).font('Helvetica-Bold')
-  .text('TASK 1: PROFESSIONAL LINKEDIN ANNOUNCEMENT');
-doc.moveDown(0.2);
-drawDivider();
+  .text('TASK 1: PROFESSIONAL LINKEDIN ANNOUNCEMENT', 45, 240);
 
-const t1BoxY = doc.y;
+drawDivider(257);
+
+const t1BoxY = 265;
 doc.rect(45, t1BoxY, 505, 55).fill(LIGHT_BG).stroke(BORDER);
 
 doc.fillColor(DARK).fontSize(9.5).font('Helvetica-Bold')
@@ -93,17 +89,15 @@ doc.fillColor(ACCENT).fontSize(9.5).font('Helvetica')
     underline: true,
   });
 
-doc.y = t1BoxY + 70;
-
 // ==========================================
 // 4. TASK 2: PORTFOLIO WEB APPLICATION
 // ==========================================
 doc.fillColor(PRIMARY).fontSize(12).font('Helvetica-Bold')
-  .text('TASK 2: FULLY RESPONSIVE PORTFOLIO WEB APPLICATION');
-doc.moveDown(0.2);
-drawDivider();
+  .text('TASK 2: FULLY RESPONSIVE PORTFOLIO WEB APPLICATION', 45, 338);
 
-const t2BoxY = doc.y;
+drawDivider(355);
+
+const t2BoxY = 363;
 doc.rect(45, t2BoxY, 505, 75).fill(LIGHT_BG).stroke(BORDER);
 
 doc.fillColor(DARK).fontSize(9.5).font('Helvetica-Bold')
@@ -125,17 +119,15 @@ doc.fillColor(ACCENT).font('Helvetica')
 doc.fillColor(MUTED).fontSize(8.5).font('Helvetica')
   .text('Tech Stack: Semantic HTML5, CSS Grid & Flexbox, Vanilla JavaScript', 60, t2BoxY + 54);
 
-doc.y = t2BoxY + 90;
-
 // ==========================================
 // 5. TASK 3: DYNAMIC TASK DASHBOARD
 // ==========================================
 doc.fillColor(PRIMARY).fontSize(12).font('Helvetica-Bold')
-  .text('TASK 3: INTERACTIVE DYNAMIC TASK DASHBOARD PLATFORM');
-doc.moveDown(0.2);
-drawDivider();
+  .text('TASK 3: INTERACTIVE DYNAMIC TASK DASHBOARD PLATFORM', 45, 456);
 
-const t3BoxY = doc.y;
+drawDivider(473);
+
+const t3BoxY = 481;
 doc.rect(45, t3BoxY, 505, 75).fill(LIGHT_BG).stroke(BORDER);
 
 doc.fillColor(DARK).fontSize(9.5).font('Helvetica-Bold')
@@ -157,8 +149,6 @@ doc.fillColor(ACCENT).font('Helvetica')
 doc.fillColor(MUTED).fontSize(8.5).font('Helvetica')
   .text('Tech Stack: React 18 + Vite, Node.js + Express, REST API, Full CRUD', 60, t3BoxY + 54);
 
-doc.y = t3BoxY + 90;
-
 // ==========================================
 // 6. FOOTER DECLARATION
 // ==========================================
@@ -174,5 +164,5 @@ doc.fillColor('#047857').fontSize(8.5).font('Helvetica')
 doc.end();
 
 writeStream.on('finish', () => {
-  console.log('Simple 1-Page PDF updated successfully with ID B10/1713 and Full Stack Development!');
+  console.log('PDF regenerated with perfectly left-aligned Task 1 title!');
 });
