@@ -35,7 +35,7 @@ doc.fillColor('#ffffff').fontSize(18).font('Helvetica-Bold')
   .text('PROGREE INTERNSHIP PROGRAM', 60, 52);
 
 doc.fontSize(10).font('Helvetica')
-  .text('Remote 1-Month Frontend Development Internship — Task Submission', 60, 75);
+  .text('Remote 1-Month Full Stack Development Internship — Task Submission', 60, 75);
 
 doc.y = 115;
 
@@ -58,8 +58,8 @@ doc.text('Domain:', 60, infoBoxY + 52);
 
 doc.font('Helvetica').fillColor(MUTED);
 doc.text('Ehtesham Rashid', 145, infoBoxY + 12);
-doc.text('B10/1711', 145, infoBoxY + 32);
-doc.text('Frontend Development (MERN)', 145, infoBoxY + 52);
+doc.text('B10/1713', 145, infoBoxY + 32);
+doc.text('Full Stack Development', 145, infoBoxY + 52);
 
 doc.fillColor(DARK).font('Helvetica-Bold');
 doc.text('University:', 305, infoBoxY + 12);
@@ -169,10 +169,10 @@ doc.fillColor('#065f46').fontSize(9.5).font('Helvetica-Bold')
   .text('SUBMISSION STATUS: COMPLETED (3 OUT OF 4 TASKS)', 60, footerY + 11);
 
 doc.fillColor('#047857').fontSize(8.5).font('Helvetica')
-  .text('Submitted by: Ehtesham Rashid (ID: B10/1711) | Progree Internship Team', 60, footerY + 26);
+  .text('Submitted by: Ehtesham Rashid (ID: B10/1713) | Progree Internship Team', 60, footerY + 26);
 
 doc.end();
 
 writeStream.on('finish', () => {
-  console.log('Simple 1-Page PDF generated successfully at:', outputPath);
+  console.log('Simple 1-Page PDF updated successfully with ID B10/1713 and Full Stack Development!');
 });
