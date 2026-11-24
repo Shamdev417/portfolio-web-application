@@ -149,20 +149,9 @@ doc.fillColor(ACCENT).font('Helvetica')
 doc.fillColor(MUTED).fontSize(8.5).font('Helvetica')
   .text('Tech Stack: React 18 + Vite, Node.js + Express, REST API, Full CRUD', 60, t3BoxY + 54);
 
-// ==========================================
-// 6. FOOTER DECLARATION
-// ==========================================
-const footerY = 745;
-doc.rect(45, footerY, 505, 45).fill('#ecfdf5').stroke('#10b981');
-
-doc.fillColor('#065f46').fontSize(9.5).font('Helvetica-Bold')
-  .text('SUBMISSION STATUS: COMPLETED (3 OUT OF 4 TASKS)', 60, footerY + 11);
-
-doc.fillColor('#047857').fontSize(8.5).font('Helvetica')
-  .text('Submitted by: Ehtesham Rashid (ID: B10/1713) | Progree Internship Team', 60, footerY + 26);
-
+// Document End (Footer removed completely)
 doc.end();
 
 writeStream.on('finish', () => {
-  console.log('PDF regenerated with perfectly left-aligned Task 1 title!');
+  console.log('PDF regenerated with footer completely removed!');
 });
