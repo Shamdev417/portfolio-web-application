@@ -31,19 +31,9 @@ let menuOpen = false;
 
 function openMenu() {
   menuOpen = true;
-  mobileMenu.hidden = false;
-  backdrop.hidden   = false;
-
-  // Allow paint before adding classes (triggers CSS transition)
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => {
-      mobileMenu.classList.add('open');
-      backdrop.classList.add('visible');
-    });
-  });
-
+  mobileMenu.classList.add('open');
+  backdrop.classList.add('visible');
   hamburgerBtn.setAttribute('aria-expanded', 'true');
-  mobileMenu.removeAttribute('hidden'); // ensure shown
   document.body.style.overflow = 'hidden'; // prevent background scroll
   trapFocus(mobileMenu);
 }
@@ -54,28 +44,37 @@ function closeMenu() {
   backdrop.classList.remove('visible');
   hamburgerBtn.setAttribute('aria-expanded', 'false');
   document.body.style.overflow = '';
-
-  // Hide after transition ends
-  const onEnd = () => {
-    mobileMenu.hidden = true;
-    backdrop.hidden   = true;
-    mobileMenu.removeEventListener('transitionend', onEnd);
-  };
-  mobileMenu.addEventListener('transitionend', onEnd);
-
   hamburgerBtn.focus();
 }
 
-function toggleMenu() {
+function toggleMenu(e) {
+  if (e) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
   menuOpen ? closeMenu() : openMenu();
 }
 
 hamburgerBtn.addEventListener('click', toggleMenu);
-closeBtn.addEventListener('click', closeMenu);
-backdrop.addEventListener('click', closeMenu);
+
+closeBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+  closeMenu();
+});
+
+backdrop.addEventListener('click', (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+  closeMenu();
+});
 
 // Close on link click
-mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
+mobileLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    closeMenu();
+  });
+});
 
 // Close on Escape
 document.addEventListener('keydown', e => {
@@ -350,10 +349,10 @@ $$('a[href^="#"]').forEach(anchor => {
 });
 
 /* ═══════════════════════════════════════════════════════════
-   10. KEYBOARD NAVIGATION — Close menu on outside click
+   10. KEYBOARD & OUTSIDE CLICK NAVIGATION
 ═══════════════════════════════════════════════════════════ */
 document.addEventListener('click', (e) => {
-  if (menuOpen && !mobileMenu.contains(e.target) && e.target !== hamburgerBtn) {
+  if (menuOpen && !mobileMenu.contains(e.target) && !hamburgerBtn.contains(e.target)) {
     closeMenu();
   }
 });
