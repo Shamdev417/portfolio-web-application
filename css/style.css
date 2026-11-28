@@ -382,21 +382,32 @@ input, textarea, select { font: inherit; }
   display: none;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   gap: 5px;
-  width: 2.25rem;
-  height: 2.25rem;
-  padding: .25rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: .35rem;
   border-radius: var(--radius-sm);
   flex-shrink: 0;
-  transition: background var(--dur-fast);
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid transparent;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: background var(--dur-fast), border-color var(--dur-fast);
 }
-.nav__hamburger:hover { background: rgba(255,255,255,.08); }
+.nav__hamburger:hover,
+.nav__hamburger:active {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.12);
+}
 
 .hamburger__line {
   display: block;
   height: 2px;
   background: var(--clr-text);
   border-radius: var(--radius-full);
+  pointer-events: none;
   transition: transform var(--dur-normal) var(--ease-out),
               opacity   var(--dur-normal) var(--ease-out),
               width     var(--dur-normal) var(--ease-out);
@@ -424,14 +435,14 @@ input, textarea, select { font: inherit; }
 .mobile-menu__backdrop {
   position: fixed;
   inset: 0;
-  z-index: 1001;
+  z-index: 1999;
   background: rgba(0, 0, 0, 0.75);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity var(--dur-normal) var(--ease-out), visibility var(--dur-normal);
+  transition: opacity 0.25s ease, visibility 0.25s;
 }
 .mobile-menu__backdrop.visible {
   opacity: 1;
@@ -441,11 +452,16 @@ input, textarea, select { font: inherit; }
 
 .mobile-menu {
   position: fixed;
-  inset: 0 0 0 auto;
-  z-index: 1002;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: auto;
+  z-index: 2000;
   width: min(320px, 85vw);
-  background: #0f0f1a;
-  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  height: 100vh;
+  height: 100dvh;
+  background: #0d0d18;
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
   padding: var(--space-6);
   display: flex;
   flex-direction: column;
@@ -453,9 +469,10 @@ input, textarea, select { font: inherit; }
   transform: translateX(100%);
   visibility: hidden;
   pointer-events: none;
-  transition: transform var(--dur-normal) var(--ease-out), visibility var(--dur-normal);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s;
   overflow-y: auto;
-  box-shadow: -8px 0 32px rgba(0, 0, 0, 0.6);
+  -webkit-overflow-scrolling: touch;
+  box-shadow: -8px 0 32px rgba(0, 0, 0, 0.75);
 }
 .mobile-menu.open {
   transform: translateX(0);

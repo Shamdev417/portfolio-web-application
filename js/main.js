@@ -352,9 +352,10 @@ $$('a[href^="#"]').forEach(anchor => {
    10. KEYBOARD & OUTSIDE CLICK NAVIGATION
 ═══════════════════════════════════════════════════════════ */
 document.addEventListener('click', (e) => {
-  if (menuOpen && !mobileMenu.contains(e.target) && !hamburgerBtn.contains(e.target)) {
-    closeMenu();
-  }
+  if (!menuOpen) return;
+  if (mobileMenu && mobileMenu.contains(e.target)) return;
+  if (hamburgerBtn && hamburgerBtn.contains(e.target)) return;
+  closeMenu();
 });
 
 /* ═══════════════════════════════════════════════════════════
