@@ -718,108 +718,42 @@ input, textarea, select { font: inherit; }
 /* ────────────────────────────────────────────────────────────
    10. ABOUT SECTION
 ──────────────────────────────────────────────────────────── */
-.about__grid {
-  display: grid;
-  grid-template-columns: 1fr 1.3fr;
-  gap: var(--space-16);
-  align-items: center;
+.about__container {
+  max-width: 860px;
+  margin-inline: auto;
 }
 
-.about__code-card {
-  background: var(--clr-surface);
-  border: 1px solid var(--clr-border-hover);
-  border-radius: var(--radius-xl);
-  overflow: hidden;
-  box-shadow: var(--shadow-lg), 0 0 30px rgba(99, 102, 241, 0.08);
-  transition: transform var(--dur-normal) var(--ease-out), border-color var(--dur-normal), box-shadow var(--dur-normal);
-  max-width: 460px;
-  width: 100%;
+.about__content {
+  text-align: center;
 }
-.about__code-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(99, 102, 241, 0.4);
-  box-shadow: var(--shadow-lg), var(--shadow-glow);
-}
-
-.code-card__header {
-  background: rgba(255, 255, 255, 0.03);
-  border-bottom: 1px solid var(--clr-border);
-  padding: var(--space-3) var(--space-4);
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-}
-
-.code-card__controls {
-  display: flex;
-  gap: 6px;
-}
-.code-card__dot {
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
-  display: inline-block;
-}
-.code-card__dot--red { background: #ef4444; }
-.code-card__dot--yellow { background: #f59e0b; }
-.code-card__dot--green { background: #10b981; }
-
-.code-card__filename {
-  font-family: var(--font-display);
-  font-size: var(--text-xs);
-  color: var(--clr-text-muted);
-  font-weight: var(--fw-medium);
-  letter-spacing: 0.05em;
-  margin-right: auto;
-}
-
-.code-card__badge {
-  font-size: var(--text-xs);
-  padding: 0.15rem 0.5rem;
-  border-radius: var(--radius-full);
-  background: rgba(99, 102, 241, 0.15);
-  color: var(--clr-primary-light);
-  border: 1px solid rgba(99, 102, 241, 0.25);
-  font-weight: var(--fw-semi);
-}
-
-.code-card__body {
-  padding: var(--space-5) var(--space-6);
-  font-family: 'Fira Code', 'Cascadia Code', Consolas, Monaco, monospace;
-  font-size: clamp(0.78rem, 1.3vw, 0.88rem);
-  line-height: 1.65;
-  color: var(--clr-text);
-  overflow-x: auto;
-}
-
-.code-card__body pre {
-  margin: 0;
-  font-family: inherit;
-}
-
-/* Syntax highlighting tokens */
-.c-kw { color: #c084fc; font-weight: 600; }     /* Keyword */
-.c-var { color: #38bdf8; }                      /* Variable */
-.c-prop { color: #94a3b8; }                     /* Property key */
-.c-str { color: #34d399; }                      /* String value */
 
 .about__subtitle {
   font-family: var(--font-display);
-  font-size: var(--text-2xl);
+  font-size: clamp(var(--text-xl), 3vw, var(--text-3xl));
   font-weight: var(--fw-bold);
   margin-bottom: var(--space-4);
+  color: var(--clr-text);
 }
 .about__text {
   color: var(--clr-text-muted);
+  font-size: var(--text-base);
   line-height: var(--lh-loose);
   margin-bottom: var(--space-4);
+  max-width: 72ch;
+  margin-inline: auto;
 }
 
 .about__details {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
   gap: var(--space-4);
   margin-block: var(--space-8);
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  text-align: center;
+  box-shadow: var(--shadow-sm);
 }
 .about__detail dt {
   font-size: var(--text-xs);
@@ -841,6 +775,7 @@ input, textarea, select { font: inherit; }
 .about__cta-row {
   display: flex;
   gap: var(--space-4);
+  justify-content: center;
   flex-wrap: wrap;
 }
 
@@ -1591,8 +1526,7 @@ a.contact__info-value:hover { color: var(--clr-primary-light); }
   .hero__badge--node   { bottom: 5%; right: 0;  }
   .hero__badge--design { bottom: 0; left: 0;   }
 
-  .about__grid { grid-template-columns: 1fr; gap: var(--space-10); }
-  .about__code-card { margin-inline: auto; }
+  .about__details { grid-template-columns: repeat(2, 1fr); }
 
   .skills__categories { grid-template-columns: 1fr 1fr; }
 

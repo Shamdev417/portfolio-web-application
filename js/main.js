@@ -148,7 +148,7 @@ const revealObserver = new IntersectionObserver(
 // Auto-mark elements in sections for reveal
 function setupReveal() {
   const targets = $$([
-    '.about__grid > *',
+    '.about__content',
     '.skills__card',
     '.project-card',
     '.testimonial-card',
