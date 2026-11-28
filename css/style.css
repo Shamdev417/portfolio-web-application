@@ -725,36 +725,83 @@ input, textarea, select { font: inherit; }
   align-items: center;
 }
 
-.about__photo-wrap {
-  position: relative;
-  display: flex;
-  justify-content: center;
-}
-.about__photo {
-  width: clamp(220px, 28vw, 340px);
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: var(--grad-primary);
-  padding: 4px;
+.about__code-card {
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border-hover);
+  border-radius: var(--radius-xl);
   overflow: hidden;
+  box-shadow: var(--shadow-lg), 0 0 30px rgba(99, 102, 241, 0.08);
+  transition: transform var(--dur-normal) var(--ease-out), border-color var(--dur-normal), box-shadow var(--dur-normal);
+  max-width: 460px;
+  width: 100%;
 }
-/* Real profile photo — about section */
-.about__photo-inner {
-  width: 100%; height: 100%;
+.about__code-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(99, 102, 241, 0.4);
+  box-shadow: var(--shadow-lg), var(--shadow-glow);
+}
+
+.code-card__header {
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid var(--clr-border);
+  padding: var(--space-3) var(--space-4);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.code-card__controls {
+  display: flex;
+  gap: 6px;
+}
+.code-card__dot {
+  width: 11px;
+  height: 11px;
   border-radius: 50%;
-  object-fit: cover;
-  object-position: center top;
-  display: block;
+  display: inline-block;
 }
-.about__photo-deco {
-  position: absolute;
-  inset: -16px;
-  border: 2px dashed var(--clr-border-hover);
-  border-radius: 50%;
-  pointer-events: none;
-  animation: deco-spin 20s linear infinite;
+.code-card__dot--red { background: #ef4444; }
+.code-card__dot--yellow { background: #f59e0b; }
+.code-card__dot--green { background: #10b981; }
+
+.code-card__filename {
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
+  color: var(--clr-text-muted);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.05em;
+  margin-right: auto;
 }
-@keyframes deco-spin { to { transform: rotate(360deg); } }
+
+.code-card__badge {
+  font-size: var(--text-xs);
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-full);
+  background: rgba(99, 102, 241, 0.15);
+  color: var(--clr-primary-light);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  font-weight: var(--fw-semi);
+}
+
+.code-card__body {
+  padding: var(--space-5) var(--space-6);
+  font-family: 'Fira Code', 'Cascadia Code', Consolas, Monaco, monospace;
+  font-size: clamp(0.78rem, 1.3vw, 0.88rem);
+  line-height: 1.65;
+  color: var(--clr-text);
+  overflow-x: auto;
+}
+
+.code-card__body pre {
+  margin: 0;
+  font-family: inherit;
+}
+
+/* Syntax highlighting tokens */
+.c-kw { color: #c084fc; font-weight: 600; }     /* Keyword */
+.c-var { color: #38bdf8; }                      /* Variable */
+.c-prop { color: #94a3b8; }                     /* Property key */
+.c-str { color: #34d399; }                      /* String value */
 
 .about__subtitle {
   font-family: var(--font-display);
@@ -1545,7 +1592,7 @@ a.contact__info-value:hover { color: var(--clr-primary-light); }
   .hero__badge--design { bottom: 0; left: 0;   }
 
   .about__grid { grid-template-columns: 1fr; gap: var(--space-10); }
-  .about__photo-wrap { justify-content: center; }
+  .about__code-card { margin-inline: auto; }
 
   .skills__categories { grid-template-columns: 1fr 1fr; }
 
